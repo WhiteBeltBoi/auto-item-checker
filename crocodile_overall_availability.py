@@ -10,7 +10,7 @@ from selenium.webdriver.firefox.options import Options
 from datetime import datetime
 
 def setup_driver():
-    with open(".profile_path.txt", "r") as f:
+    with open("/Users/johndoe/PycharmProjects/baby_jacket_checker/web_scraping_baby_jacket/profile_path.txt", "r") as f:
 
         profile_path = f.read().strip()
 
@@ -68,7 +68,7 @@ def write_to_file():
     size_available = get_availability()
     date = datetime.now().strftime("%Y-%m-%d-%H-%M")
 
-    with open("log.txt", "w") as f:
+    with open("/Users/johndoe/PycharmProjects/baby_jacket_checker/web_scraping_baby_jacket/log.txt", "w") as f:
         f.write(f"{date} - {size_available}")
 
 if __name__ == "__main__":

@@ -2,4 +2,5 @@
 .venv/
 log.txt
 .idea/
-.profile_path.txt
+profile_path.txt
+main.log

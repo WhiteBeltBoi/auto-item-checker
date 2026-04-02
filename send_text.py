@@ -1,7 +1,7 @@
 import subprocess
 
 def send_text():
-    with open("log.txt", "r") as f:
+    with open("/Users/johndoe/PycharmProjects/baby_jacket_checker/web_scraping_baby_jacket/log.txt", "r") as f:
         info = f.read().split()
 
     if info and info[-1] != "unavailable":
@@ -18,6 +18,7 @@ def send_text():
 
         subprocess.run(["osascript", "-e", script], check=True)
     else:
+        print("Product is still unavailable")
         exit(1)
 if __name__ == "__main__":
     send_text()
