@@ -68,8 +68,8 @@ def write_to_file():
     size_available = get_availability()
     date = datetime.now().strftime("%Y-%m-%d-%H-%M")
 
-    with open("/Users/johndoe/PycharmProjects/baby_jacket_checker/web_scraping_baby_jacket/log.txt", "a") as f:
-        f.write(f"{date} - {size_available}")
+    with open("/Users/johndoe/PycharmProjects/baby_jacket_checker/web_scraping_baby_jacket/log.txt", "w") as f:
+        f.write(f"{size_available}")
     with open("/Users/johndoe/PycharmProjects/baby_jacket_checker/web_scraping_baby_jacket/main.log", "a") as logger:
         logger.write(f"{date}: ")
 
