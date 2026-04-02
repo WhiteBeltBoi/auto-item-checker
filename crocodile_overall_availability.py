@@ -71,7 +71,7 @@ def write_to_file():
     with open("/Users/johndoe/PycharmProjects/baby_jacket_checker/web_scraping_baby_jacket/log.txt", "a") as f:
         f.write(f"{date} - {size_available}")
     with open("/Users/johndoe/PycharmProjects/baby_jacket_checker/web_scraping_baby_jacket/main.log", "a") as logger:
-        logger.write(f"{date}")
+        logger.write(f"{date}: ")
 
 if __name__ == "__main__":
     write_to_file()
