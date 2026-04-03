@@ -1,13 +1,14 @@
 import subprocess
 
-def send_text():
-    with open("/Users/johndoe/PycharmProjects/baby_jacket_checker/web_scraping_baby_jacket/log.txt", "r") as f:
+def send_text(my_log:str, type_:str):
+    with open(f"{my_log}", "r") as f:
         info = f.read().split()
 
-    if info and info[-1] != "unavailable":
-        print("Great success!")
-        phone_number = "+36309507721"
-        message = "The baby jacket is available."
+    if not info or info[-1] == "unavailable":
+        return False
+    else:
+        phone_number = "+36202685990"
+        message = f"The {type_} baby jacket is available."
         script = f'''
         tell application "Messages"
             set targetService to 1st service whose service type = iMessage
@@ -17,8 +18,8 @@ def send_text():
         '''
 
         subprocess.run(["osascript", "-e", script], check=True)
-    else:
-        print("Product is still unavailable")
-        exit(1)
+        return True
+
+
 if __name__ == "__main__":
-    send_text()
+    send_text("/Users/johndoe/PycharmProjects/baby_jacket_checker/web_scraping_baby_jacket/av0999_log.txt")

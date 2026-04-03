@@ -21,10 +21,9 @@ def setup_driver():
     return webdriver.Firefox(options=options)
 
 
-def get_availability():
+def get_availability(url):
     driver = setup_driver()
     size_available = ""
-    url = "https://www.nextdirect.com/hu/en/style/su148815/av0999"
     wait = WebDriverWait(driver, 15)
     try:
         driver.get(url)
@@ -64,14 +63,16 @@ def get_availability():
         driver.quit()
     return size_available
 
-def write_to_file():
-    size_available = get_availability()
+def write_to_file(url, log_reference):
+    size_available = get_availability(url)
     date = datetime.now().strftime("%Y-%m-%d-%H-%M")
+    width = 12
 
-    with open("/Users/johndoe/PycharmProjects/baby_jacket_checker/web_scraping_baby_jacket/log.txt", "w") as f:
+    with open(f"/Users/johndoe/PycharmProjects/baby_jacket_checker/web_scraping_baby_jacket/{log_reference}_log.txt", "w") as f:
         f.write(f"{size_available}")
     with open("/Users/johndoe/PycharmProjects/baby_jacket_checker/web_scraping_baby_jacket/main.log", "a") as logger:
-        logger.write(f"{date}: {size_available}\n")
+        logger.write(f"{date}: {log_reference:^{width}} - {size_available}\n")
 
 if __name__ == "__main__":
-    write_to_file()
+    write_to_file("https://www.nextdirect.com/hu/en/style/su148815/av0999")
+    write_to_file("https://www.nextdirect.com/hu/en/style/su148815/g12753")
