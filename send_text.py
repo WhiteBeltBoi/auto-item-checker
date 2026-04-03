@@ -1,24 +1,17 @@
 import subprocess
 
-def send_text(my_log:str, type_:str):
-    with open(f"{my_log}", "r") as f:
-        info = f.read().split()
+def send_text(type_:str):
+    phone_number = "+36309507721"
+    message = f"The {type_} baby jacket is available."
+    script = f'''
+    tell application "Messages"
+        set targetService to 1st service whose service type = iMessage
+        set targetBuddy to buddy "{phone_number}" of targetService
+        send "{message}" to targetBuddy
+    end tell
+    '''
 
-    if not info or info[-1] == "unavailable":
-        return False
-    else:
-        phone_number = "+36202685990"
-        message = f"The {type_} baby jacket is available."
-        script = f'''
-        tell application "Messages"
-            set targetService to 1st service whose service type = iMessage
-            set targetBuddy to buddy "{phone_number}" of targetService
-            send "{message}" to targetBuddy
-        end tell
-        '''
-
-        subprocess.run(["osascript", "-e", script], check=True)
-        return True
+    subprocess.run(["osascript", "-e", script], check=True)
 
 
 if __name__ == "__main__":

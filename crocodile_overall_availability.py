@@ -58,21 +58,17 @@ def get_availability(url):
                 size_available = option.text.strip()
 
     except TimeoutException:
-        print("Could not find the dropdown or the size options on the page.")
+        return None
     finally:
         driver.quit()
     return size_available
 
-def write_to_file(url, log_reference):
-    size_available = get_availability(url)
+def write_to_file(size_available, log_reference):
     date = datetime.now().strftime("%Y-%m-%d-%H-%M")
     width = 12
 
-    with open(f"/Users/johndoe/PycharmProjects/baby_jacket_checker/web_scraping_baby_jacket/{log_reference}_log.txt", "w") as f:
-        f.write(f"{size_available}")
     with open("/Users/johndoe/PycharmProjects/baby_jacket_checker/web_scraping_baby_jacket/main.log", "a") as logger:
         logger.write(f"{date}: {log_reference:^{width}} - {size_available}\n")
-
 if __name__ == "__main__":
     write_to_file("https://www.nextdirect.com/hu/en/style/su148815/av0999")
     write_to_file("https://www.nextdirect.com/hu/en/style/su148815/g12753")
