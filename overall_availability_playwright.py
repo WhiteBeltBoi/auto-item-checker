@@ -7,14 +7,11 @@ def get_page_info(url):
 
         page = browser.new_page()
         page.goto(url)
-        size_dropdown = page.locator(
-            "div[role='combobox'][aria-labelledby='size-input-label']"
-        )
-        size_dropdown.wait_for(timeout=15000)
+        size_dropdown = page.locator("div[role='combobox'][aria-labelledby='size-input-label']")
         size_dropdown.click()
 
         size_options = page.locator("li[role='option'][data-value = '28']")
-        size_options.first.wait_for(state="visible", timeout=15000)
+        # size_options.first.wait_for(state="visible")
 
         my_size = size_options.text_content().split()
         browser.close()
@@ -29,10 +26,6 @@ def write_log(size_availability, type_):
     log_file = "/Users/johndoe/PycharmProjects/baby_jacket_checker/web_scraping_baby_jacket/main.log"
     with open(log_file, "a") as logger:
         logger.write(f"{date}: {type_:^{width}} - {size_availability[0]} : {size_availability[-1]}\n")
-
-
-
-
 
 
 if __name__ == "__main__":
