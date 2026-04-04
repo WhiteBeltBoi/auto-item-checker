@@ -10,10 +10,8 @@ from selenium.webdriver.firefox.options import Options
 from datetime import datetime
 
 def setup_driver():
-    with open("/Users/johndoe/PycharmProjects/baby_jacket_checker/web_scraping_baby_jacket/profile_path.txt", "r") as f:
 
-        profile_path = f.read().strip()
-
+    profile_path = "/Users/johndoe/Library/Application Support/Firefox/Profiles/qyd7PSVJ.Profile 2"
     options = Options()
     options.add_argument("-profile")
     options.add_argument(profile_path)
