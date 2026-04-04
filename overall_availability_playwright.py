@@ -6,12 +6,12 @@ def get_page_info(url):
         browser = p.chromium.launch(headless=False)
 
         page = browser.new_page()
-        page.goto(url)
+        page.goto(url, timeout=10000)
         size_dropdown = page.locator("div[role='combobox'][aria-labelledby='size-input-label']")
         size_dropdown.click()
 
         size_options = page.locator("li[role='option'][data-value = '28']")
-        # size_options.first.wait_for(state="visible")
+        size_options.first.wait_for(state="visible", timeout=8000)
 
         my_size = size_options.text_content().split()
         browser.close()
