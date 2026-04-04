@@ -8,7 +8,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.firefox.options import Options
 from datetime import datetime
-
+log_file = "/Users/johndoe/PycharmProjects/baby_jacket_checker/web_scraping_baby_jacket/main.log"
 def setup_driver():
 
     profile_path = "/Users/johndoe/Library/Application Support/Firefox/Profiles/qyd7PSVJ.Profile 2"
@@ -56,6 +56,8 @@ def get_availability(url):
                 size_available = option.text.strip()
 
     except TimeoutException:
+        with open(log_file, "a") as f:
+            f.write(f"TimeoutException on this url: {url}\n")
         return None
     finally:
         driver.quit()
@@ -65,8 +67,8 @@ def write_to_file(size_available, log_reference):
     date = datetime.now().strftime("%Y-%m-%d-%H-%M")
     width = 12
 
-    with open("/Users/johndoe/PycharmProjects/baby_jacket_checker/web_scraping_baby_jacket/main.log", "a") as logger:
+    with open(log_file, "a") as logger:
         logger.write(f"{date}: {log_reference:^{width}} - {size_available}\n")
 if __name__ == "__main__":
-    write_to_file("https://www.nextdirect.com/hu/en/style/su148815/av0999")
-    write_to_file("https://www.nextdirect.com/hu/en/style/su148815/g12753")
+    write_to_file("https://www.nextdirect.com/hu/en/style/su148815/av0999","crocodile")
+    write_to_file("https://www.nextdirect.com/hu/en/style/su148815/g12753","fox")
