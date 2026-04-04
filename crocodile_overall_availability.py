@@ -70,5 +70,6 @@ def write_to_file(size_available, log_reference):
     with open(log_file, "a") as logger:
         logger.write(f"{date}: {log_reference:^{width}} - {size_available}\n")
 if __name__ == "__main__":
-    write_to_file("https://www.nextdirect.com/hu/en/style/su148815/av0999","crocodile")
-    write_to_file("https://www.nextdirect.com/hu/en/style/su148815/g12753","fox")
+    crocodile_size_available = get_availability("https://www.nextdirect.com/hu/en/style/su148815/av0999")
+    write_to_file(crocodile_size_available, "crocodile")
+    # write_to_file("https://www.nextdirect.com/hu/en/style/su148815/g12753","fox")

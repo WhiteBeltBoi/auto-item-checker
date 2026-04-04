@@ -1,8 +1,9 @@
 import subprocess
 
-def send_text(type_:str):
-    phone_number = "+36309507721"
-    message = f"The {type_} baby jacket is available."
+def send_text(size: str,type_:str):
+    with open("/Users/johndoe/PycharmProjects/baby_jacket_checker/web_scraping_baby_jacket/phone_number.txt") as f:
+        phone_number = f.read()
+    message = f"The {type_} baby jacket in size {size} is available."
     script = f'''
     tell application "Messages"
         set targetService to 1st service whose service type = iMessage
@@ -15,4 +16,4 @@ def send_text(type_:str):
 
 
 if __name__ == "__main__":
-    send_text("/Users/johndoe/PycharmProjects/baby_jacket_checker/web_scraping_baby_jacket/av0999_log.txt")
+    send_text("80", "croc")
