@@ -61,7 +61,11 @@ def get_availability(url):
         return None
     finally:
         driver.quit()
-    return size_available
+    my_size = size_available.split()
+    size_availability = [my_size[0] if my_size else None, my_size[-1] if my_size else None]
+
+    print("SizeAvailability:", size_availability)
+    return size_availability
 
 def write_to_file(size_available, log_reference):
     date = datetime.now().strftime("%Y-%m-%d-%H-%M")
