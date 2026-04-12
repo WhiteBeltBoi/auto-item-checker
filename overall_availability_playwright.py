@@ -26,6 +26,7 @@ def get_page_info(url):
             size_options = page.locator("li[role='option'][data-value = '28']")
             size_options.first.wait_for(state="visible", timeout=8000)
         except PTimeoutError:
+            #This will just make a funny o : o surprised face if the script runs into the error. Kinda dumb, but I like it
             write_log("oo","TimeoutError")
             browser.close()
             return None
@@ -34,6 +35,7 @@ def get_page_info(url):
         my_size = size_options.text_content().split()
         browser.close()
 
+        #A bit of a dirty solution to get the first element, which is size, and the last, which is availability
         size_availability =[my_size[0] if my_size else None, my_size[-1] if my_size else None]
 
         return size_availability
@@ -41,7 +43,7 @@ def get_page_info(url):
 def write_log(size_availability , type_):
     width = 11
     date = datetime.now().strftime("%Y-%m-%d-%H-%M")
-    log_file = "/Users/johndoe/PycharmProjects/baby_jacket_checker/web_scraping_baby_jacket/main.log"
+    log_file = "/Users/johndoe/programming/python/PycharmProjects/baby_jacket_checker/web_scraping_baby_jacket/main.log"
     with open(log_file, "a") as logger:
         logger.write(f"{date}: {type_:^{width}} : {size_availability[0]} : {size_availability[-1]}\n")
 

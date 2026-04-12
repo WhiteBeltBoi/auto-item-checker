@@ -8,7 +8,8 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.firefox.options import Options
 from datetime import datetime
-log_file = "/Users/johndoe/PycharmProjects/baby_jacket_checker/web_scraping_baby_jacket/main.log"
+
+log_file = "/Users/johndoe/programming/python/PycharmProjects/baby_jacket_checker/web_scraping_baby_jacket/main.log"
 def setup_driver():
 
     profile_path = "/Users/johndoe/Library/Application Support/Firefox/Profiles/qyd7PSVJ.Profile 2"

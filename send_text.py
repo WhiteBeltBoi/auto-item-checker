@@ -1,7 +1,7 @@
 import subprocess
 
 def send_text(size: str,type_:str):
-    with open("/Users/johndoe/PycharmProjects/baby_jacket_checker/web_scraping_baby_jacket/phone_number.txt") as f:
+    with open("/Users/johndoe/programming/python/PycharmProjects/baby_jacket_checker/web_scraping_baby_jacket/phone_number.txt") as f:
         phone_number = f.read()
     message = f"The {type_} baby jacket in size {size} is available."
     script = f'''
